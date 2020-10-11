@@ -26,6 +26,9 @@ public class PersonController {
                                                    @RequestParam String sortFieldName,
                                                    @RequestParam Sort.Direction direction){
         System.out.println("GET ALL PERSONS");
+
+        //Some default changes to show ho to work git
+
         return personService.findAll(value,page,size,sortFieldName,direction);
     }
 
