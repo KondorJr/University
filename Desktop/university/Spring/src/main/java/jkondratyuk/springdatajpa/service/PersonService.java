@@ -13,7 +13,7 @@ import jkondratyuk.springdatajpa.dto.response.PersonResponse;
 import jkondratyuk.springdatajpa.entity.Person;
 import jkondratyuk.springdatajpa.repository.PersonRepository;
 import jkondratyuk.springdatajpa.specification.PersonSpecification;
-import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Decoder;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,19 +26,18 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-
     public void save(PersonRequest personRequest) throws IOException {
         String img = personRequest.getPhoto();
         String [] contentAndMeta = img.split(",");
         String[] meta = contentAndMeta[0].split("/");
         String expansion = meta[1].split(";")[0];
         String name = savePerson(personRequest,expansion);
-        BASE64Decoder base64 = new BASE64Decoder();
-        byte[] content = base64.decodeBuffer(contentAndMeta[1]);
+//        BASE64Decoder base64 = new BASE64Decoder();
+//        byte[] content = base64.decodeBuffer(contentAndMeta[1]);
+        byte[] content = {'1'};
         MultiPartFileCustom multiPart = new MultiPartFileCustom(content,name,expansion);
         saveFile(multiPart);
     }
-
 
     private String savePerson(PersonRequest personRequest,String expansion){
         Person person = new Person();
